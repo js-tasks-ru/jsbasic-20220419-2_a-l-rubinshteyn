@@ -129,9 +129,11 @@ describe('7-module-4-task', () => {
   });
 
   describe('отрисовка', () => {
-    it('после создания должно быть нарисовано количество шагов переданное в момент создания', () => {
-      let steps = stepSlider.elem.querySelectorAll('.slider__steps span');
 
+    it('после создания должно быть нарисовано количество шагов переданное в момент создания', () => {
+
+      let steps = stepSlider.elem.querySelectorAll('.slider__steps span');
+      
       expect(steps.length).toBe(3);
     });
 
