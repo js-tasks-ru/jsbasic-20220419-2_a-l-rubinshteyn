@@ -1,10 +1,10 @@
 import createElement from '../../assets/lib/create-element.js';
 
 export default class Modal {
-  _container;
+ 
 
   constructor() {
-    this._container = createElement(`
+    this.elem = createElement(`
      <div class="modal">
     <!--Прозрачная подложка перекрывающая интерфейс-->
     <div class="modal__overlay"></div>
@@ -22,7 +22,6 @@ export default class Modal {
       </div>
 
       <div class="modal__body">
-        A сюда нужно добавлять содержимое тела модального окна
       </div>
     </div>
 
@@ -30,7 +29,7 @@ export default class Modal {
   }
 
   open() {
-    document.body.append(this._container);
+    document.body.append(this.elem);
     document.body.classList.add('is-modal-open');
 
     document.querySelector('.modal__close').addEventListener('click', this.close);
@@ -39,11 +38,13 @@ export default class Modal {
   }
 
   setTitle(title) {
-    this._container.querySelector('.modal__title').innerText = title;
+    this.elem.querySelector('.modal__title').innerText = title;
   }
 
   setBody(bodyElement) {
-    this._container.querySelector('.modal__body').append(bodyElement);
+    let body = this.elem.querySelector('.modal__body');
+    body.innerHTML = '';
+    body.append(bodyElement);
   }
 
   close(ev) {
