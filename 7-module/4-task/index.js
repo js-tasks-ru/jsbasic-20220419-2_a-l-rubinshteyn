@@ -14,6 +14,7 @@ export default class StepSlider {
     value = 0
   }) {
 
+    this.value = value;
     this._steps = steps;
     this._sliderContainer = createElement(`
   
