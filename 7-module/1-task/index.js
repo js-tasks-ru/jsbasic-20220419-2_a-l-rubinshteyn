@@ -32,7 +32,7 @@ export default class RibbonMenu {
 
     //скрываем кнопку налево вначале
     this._container.querySelector('.ribbon__arrow_left').classList.remove('ribbon__arrow_visible');
-
+    
     //вешаем события скрола на стрелки
     this._initHandlers();
   }
@@ -48,8 +48,8 @@ export default class RibbonMenu {
     });
 
     this._container.querySelector('.ribbon__inner').addEventListener('scroll', function () {
-      let arrowLeft = this.querySelector('.ribbon__arrow_left');
-      let arrowRight = this.querySelector('.ribbon__arrow_right');
+      let arrowLeft = document.querySelector('.ribbon__arrow_left');
+      let arrowRight = document.querySelector('.ribbon__arrow_right');
 
 
       let ribbonInner = document.querySelector('.ribbon__inner');
@@ -67,6 +67,9 @@ export default class RibbonMenu {
         arrowRight.classList.add('ribbon__arrow_visible');
       }
     });
+
+    this.value = '';
+    this._container.querySelector('.ribbon__item').classList.add('ribbon__item_active');
 
     this._container.querySelectorAll('.ribbon__item').forEach(i => i.addEventListener('click', function (e) {
       e.preventDefault();
@@ -87,6 +90,4 @@ export default class RibbonMenu {
     }));;
 
   }
-
-
 }

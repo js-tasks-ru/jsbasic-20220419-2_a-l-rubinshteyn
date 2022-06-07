@@ -10,7 +10,7 @@ export default class ProductGrid {
     this._renderProducts(this.products);
 
   }
- 
+
   _renderContainer() {
     this.elem = createElement(`
             <div class="products-grid">
@@ -33,7 +33,7 @@ export default class ProductGrid {
     this.filters = Object.assign(this.filters, filters);
     let filteredProducts = Object.assign([], this.products);
 
-    console.log(filteredProducts.length);
+
     let i = 0;
     for (const prop in this.filters) {
       i++;
@@ -42,12 +42,12 @@ export default class ProductGrid {
         switch (prop) {
           case 'noNuts':
             filteredProducts = filteredProducts.filter((p) => {
-              return p.nuts !== value;
+              return !value ? true : p.nuts !== value;
             });
             break;
           case 'vegeterianOnly':
             filteredProducts = filteredProducts.filter((p) => {
-              return p.vegeterian === value;
+              return !value ? true : p.vegeterian === value;
             });
             break;
           case 'maxSpiciness':
@@ -57,7 +57,7 @@ export default class ProductGrid {
             break;
           case 'category':
             filteredProducts = filteredProducts.filter((p) => {
-              return value.length ? p.category === value : true;
+              return !value ? true : p.category === value;
             });
             break;
 
@@ -67,8 +67,6 @@ export default class ProductGrid {
       }
     }
 
-    console.log(filteredProducts.length);
-    console.log(i);
     this._renderProducts(filteredProducts);
 
 
